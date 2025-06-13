@@ -4,13 +4,13 @@ from tkinter.scrolledtext import ScrolledText
 import requests
 from datetime import datetime
 
-# Create the main window
+#the main window
 root = Tk()
 root.title('Automated Weather Forecasting App')
 root.configure(bg='#2e2e2e')
 root.geometry("850x800")
 
-# Title label
+# Title 
 title = Label(root, text='Automated Weather Detection and Forecast', fg='#f7f7f7', bg='#2e2e2e', font=("Helvetica", 18, "bold"))
 title.grid(row=0, column=1, padx=10, pady=10, columnspan=2)
 
@@ -34,7 +34,7 @@ for i, text in enumerate(labels_texts):
 # Function to get current weather
 def get_weather():
     city = city_input.get()
-    api_key = 'a24146e751486d5e754514831991531a' # Replace with your actual API key
+    api_key = 'a24146e751486d5e754514831991531a' 
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     
     try:
@@ -72,10 +72,10 @@ def get_weather():
 forecast_area = ScrolledText(root, width=110, height=15, font=('Courier', 10), bg='#1e1e1e', fg='#00ff00')
 forecast_area.grid(row=10, column=0, columnspan=3, padx=10, pady=10)
 
-# Function to get weather forecast with layout matching the screenshot
+# Function to get weather forecast
 def get_forecast():
     city = city_input.get()
-    api_key = 'a24146e751486d5e754514831991531a'  # Replace with your actual API key
+    api_key = 'a24146e751486d5e754514831991531a' 
     url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units=metric"
     
     try:
@@ -102,7 +102,6 @@ def get_forecast():
                 humidity = item['main']['humidity']
                 icon = item['weather'][0]['icon']
 
-                # Format text similar to the screenshot
                 forecast_area.insert(END, f"{time} | {description.capitalize():<20} | Temp: {temp}°C | Wind: {wind_speed} km/h | Humidity: {humidity}% | Rain: {rain} mm\n")
 
         else:
@@ -127,5 +126,5 @@ btn_submit.grid(row=2, column=0, pady=10)
 btn_forecast.grid(row=2, column=1, pady=10)
 btn_reset.grid(row=11, column=1, pady=10)
 
-# Run the Tkinter loop
+# Run the loop
 root.mainloop()
